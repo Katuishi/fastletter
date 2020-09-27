@@ -6,6 +6,7 @@ export default function Dashboard() {
   return (
     <div className={Style.container}>
       <section className={Style.box} >
+        <h1>FastLetter</h1>
         <Link to="/game">
           <button className={Style.button}>Start Game</button>
         </Link>
