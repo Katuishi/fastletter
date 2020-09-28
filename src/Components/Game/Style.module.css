@@ -1,0 +1,27 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  place-items: center;
+}
+
+.box{
+  width: 50%;
+  background-color: black;
+  border: 1px orangered solid;
+  height: auto;
+  text-align: center;
+
+
+}
+
+.letter {
+  color: whitesmoke;
+  font-size: 50px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  text-align: center;
+}
