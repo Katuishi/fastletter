@@ -21,15 +21,14 @@ export default function Game() {
 
   useEffect(() => {
     selectLetter();
-    setCountLetterShow(countLetterShow + 1);
-  }, []);
+    
+  }, [countLetterShow]);
 
   const onKeyUp = (e) => {
     if (!timeover) {
       if (e.key.toLowerCase() === letter) {
         setScore(score + 1);
       }
-      selectLetter();
       setCountLetterShow(countLetterShow + 1);
     }
   };
