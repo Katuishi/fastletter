@@ -2,11 +2,23 @@ import React, { useState, useEffect } from "react";
 import useEventListener from "../../Hooks/useEventListener";
 import useTime from "../../Hooks/useTime";
 import Style from "./Style.module.css";
-export default function Game() {
+
+export default function Game({ level }) {
+  const settingLevel = {
+    1: {
+      time: 30,
+    },
+    2: {
+      time: 45,
+    },
+    3: {
+      time: 60,
+    },
+  };
   const [letter, setLetter] = useState();
   const [score, setScore] = useState(0);
   const [countLetterShow, setCountLetterShow] = useState(0);
-  const { time, timeover, resetTime } = useTime(10);
+  const { time, timeover, resetTime } = useTime(settingLevel[level].time);
 
   const resetGame = () => {
     resetTime();
@@ -21,7 +33,6 @@ export default function Game() {
 
   useEffect(() => {
     selectLetter();
-    
   }, [countLetterShow]);
 
   const onKeyUp = (e) => {
@@ -41,14 +52,16 @@ export default function Game() {
         {timeover ? (
           <>
             <p
-              className={Style.letter}
+              className={Style.title}
             >{`Time over  ${score} / ${countLetterShow}`}</p>
-            <button onClick={resetGame}>RESET</button>
+            <button className={Style.button} onClick={resetGame}>
+              RESET
+            </button>
           </>
         ) : (
           <>
-            <p className={Style.letter}>Score:{score}</p>
-            <p className={Style.letter}>Time:{time}</p>
+            <p className={Style.title}>Score:{score}</p>
+            <p className={Style.title}>Time:{time}</p>
             <p className={Style.letter}>{letter}</p>
           </>
         )}
