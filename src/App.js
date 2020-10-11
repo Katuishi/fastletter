@@ -6,6 +6,8 @@ import Init from "./Views/Init";
 import { ApolloProvider } from "@apollo/client";
 import { client } from "./Graphql/Client";
 import { GameProvider } from "./Context/GameContext";
+import Scorelayout from "./Views/Scorelayout";
+
 
 function App() {
   return (
@@ -22,6 +24,9 @@ function App() {
               </Route>
               <Route exact path="/level">
                 <Level></Level>
+              </Route>
+              <Route exact path="/scoreboard">
+                <Scorelayout></Scorelayout>
               </Route>
             </Switch>
           </BrowserRouter>
