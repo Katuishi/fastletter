@@ -1,33 +1,50 @@
-import { useMutation, useQuery } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import React, { useState } from "react";
 import { ALL_SCORE } from "../../Graphql/Query";
+import Score from "../Score";
+import Style from "./Style.module.css";
 
-function ListScores({ diffcult }) {
-  
-  const { data, error, loading } = useQuery(ALL_SCORE);
+function ListScores({ level }) {
+  const { data, error, loading } = useQuery(ALL_SCORE,{variables:{
+    level:level
+  }});
 
   if (error) return <div>error</div>;
   if (loading) return <div>loading</div>;
-  return data.map((x) => (
-    <div>
-      <div>x.position</div>
-      <div>x.username</div>
-      <div>x.score</div>
-    </div>
+  console.log(data);
+  return data.Scores.map((x, index) => (
+    <Score position={index + 1} username={x.username} points={x.points}></Score>
   ));
 }
 
-export function Scoreboard() {
-  const [difficult, setDifficult] = useState(1);
+export default function Scoreboard() {
+  const [level, setLevel] = useState("easy");
 
   return (
-    <div className="scoreboard">
-      <div className="scoreboard-header">
-        <button onClick={() => setDifficult(1)}>EASY</button>
-        <button onClick={() => setDifficult(2)}>MEDIUN</button>
-        <button onClick={() => setDifficult(3)}>HARD</button>
+    <div className={Style.scoreboard}>
+      <div className={Style.scoreboard_header}>
+        <button
+          className={level === "easy" ? Style.offbox : Style.onbox}
+          onClick={() => setLevel("easy")}
+        >
+          EASY
+        </button>
+        <button
+          className={level === "mediun" ? Style.offbox : Style.onbox}
+          onClick={() => setLevel("mediun")}
+        >
+          MEDIUN
+        </button>
+        <button
+          className={level === "hard" ? Style.offbox : Style.onbox}
+          onClick={() => setLevel("hard")}
+        >
+          HARD
+        </button>
       </div>
-      <div className="scoreboard-body"></div>
+      <div className={Style.scoreboard_body}>
+        <ListScores level={level} />
+      </div>
     </div>
   );
 }

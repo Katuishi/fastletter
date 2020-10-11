@@ -1,8 +1,8 @@
 import { gql } from "@apollo/client";
 
 export const ALL_SCORE = gql`
-  query {
-    score {
+  query allscore($level:String) {
+    Scores(level:$level) {
       username
       points
     }
