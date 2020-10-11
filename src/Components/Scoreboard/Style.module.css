@@ -1,0 +1,37 @@
+.scoreboard {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+}
+
+.onbox {
+  border: none;
+  color: white;
+  background-color: black;
+  font-size: 2rem;
+}
+
+.offbox {
+  border: none;
+  color: black;
+  background-color: whitesmoke;
+  font-size: 2rem;
+}
+
+.scoreboard {
+  display: grid;
+  place-items: center;
+}
+
+.scoreboard_header {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.scoreboard_body {
+  width: 300px;
+  height: 400px;
+  overflow:auto;
+}
