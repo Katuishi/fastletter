@@ -9,13 +9,13 @@ export default function Level() {
   return (
     <div className={Style.container}>
       <Link to="/game">
-        <button onClick={()=> setLevel(1)} className={Style.button}>Easy</button>
+        <button onClick={()=> setLevel("easy")} className={Style.button}>Easy</button>
       </Link>
       <Link to="/game">
-        <button onClick={()=>setLevel(2)} className={Style.button}>Mediun</button>
+        <button onClick={()=>setLevel("mediun")} className={Style.button}>Mediun</button>
       </Link>
       <Link to="/game">
-        <button onClick={()=>setLevel(3)} className={Style.button}>Hard</button>
+        <button onClick={()=>setLevel("hard")} className={Style.button}>Hard</button>
       </Link>
     </div>
   );

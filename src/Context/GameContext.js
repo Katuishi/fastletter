@@ -6,7 +6,7 @@ const { Provider } = GameContext;
 
 function GameProvider(props) {
   const [username, setUserName] = useState("");
-  const [level, setLevel] = useState(1);
+  const [level, setLevel] = useState("easy");
   const [score, setScore] = useState(0);
 
   return (

@@ -4,9 +4,10 @@ import { GameContext } from "../../Context/GameContext";
 import { ADD_SCORE } from "../../Graphql/Query";
 import useEventListener from "../../Hooks/useEventListener";
 import useTime from "../../Hooks/useTime";
+import { gameSetting } from "../../Setting/GameSetting";
 import Style from "./Style.module.css";
 
-function SubmitScore({ score }) {
+function SubmitScore({ score, level , setSubmit}) {
   const [username, setUserName] = useState("");
   const [addScore] = useMutation(ADD_SCORE);
 
@@ -17,10 +18,17 @@ function SubmitScore({ score }) {
         data: {
           username: username,
           points: score,
+          level: level,
         },
       },
     });
+    setSubmit(false)
   };
+
+  const onClick = (e)=>{
+    e.preventDefault()
+    setSubmit(false)
+  }
 
   return (
     <div>
@@ -33,7 +41,9 @@ function SubmitScore({ score }) {
             value={username}
           />
           <button type="submit">Submit</button>
+          <button onClick={onClick} type="button">Cancel</button>
         </form>
+
       </section>
     </div>
   );
@@ -41,23 +51,11 @@ function SubmitScore({ score }) {
 
 export default function Game() {
   const { level } = useContext(GameContext);
-  const setting = {
-    1: {
-      time: 60,
-    },
-    2: {
-      time: 45,
-    },
-    3: {
-      time: 30,
-    },
-  };
-
   const [letter, setLetter] = useState();
   const [score, setScore] = useState(0);
   const [countLetterShow, setCountLetterShow] = useState(0);
   const [submit, setSubmit] = useState(false);
-  const { time, timeover, resetTime } = useTime(setting[level].time);
+  const { time, timeover, resetTime } = useTime(gameSetting[level].time);
 
   useEffect(() => {
     selectLetter();
@@ -88,8 +86,10 @@ export default function Game() {
   return (
     <div className={Style.container}>
       <div className={Style.box}>
-        {submit ? <SubmitScore score={500}></SubmitScore> : null}
-        {timeover || submit     ? (
+        {submit ? (
+          <SubmitScore setSubmit={setSubmit} level={level} score={score}></SubmitScore>
+        ) : null}
+        {timeover || submit ? (
           <>
             <p
               className={Style.title}
