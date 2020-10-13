@@ -7,7 +7,7 @@ import useTime from "../../Hooks/useTime";
 import { gameSetting } from "../../Setting/GameSetting";
 import Style from "./Style.module.css";
 
-function SubmitScore({ score, level , setSubmit}) {
+function SubmitScore({ score, level, setSubmit }) {
   const [username, setUserName] = useState("");
   const [addScore] = useMutation(ADD_SCORE);
 
@@ -22,28 +22,31 @@ function SubmitScore({ score, level , setSubmit}) {
         },
       },
     });
-    setSubmit(false)
+    setSubmit(false);
   };
 
-  const onClick = (e)=>{
-    e.preventDefault()
-    setSubmit(false)
-  }
+  const onClick = (e) => {
+    e.preventDefault();
+    setSubmit(false);
+  };
 
   return (
-    <div>
-      <section>
-        <form onSubmit={(e) => onSubmit(e)}>
+    <div className={Style.modal}>
+      <section className={Style.modal_container}>
+        <form className={Style.form_submit} onSubmit={(e) => onSubmit(e)}>
           <h1 className={Style.title}>Score:{score}</h1>
           <input
             required
+            placeholder="type your username"
             onChange={(e) => setUserName(e.target.value)}
             value={username}
           />
           <button type="submit">Submit</button>
-          <button onClick={onClick} type="button">Cancel</button>
-        </form>
 
+          <button onClick={onClick} type="button">
+            Cancel
+          </button>
+        </form>
       </section>
     </div>
   );
@@ -87,7 +90,11 @@ export default function Game() {
     <div className={Style.container}>
       <div className={Style.box}>
         {submit ? (
-          <SubmitScore setSubmit={setSubmit} level={level} score={score}></SubmitScore>
+          <SubmitScore
+            setSubmit={setSubmit}
+            level={level}
+            score={score}
+          ></SubmitScore>
         ) : null}
         {timeover || submit ? (
           <>
