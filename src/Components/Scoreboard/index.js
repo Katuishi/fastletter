@@ -11,7 +11,6 @@ function ListScores({ level }) {
 
   if (error) return <div>error</div>;
   if (loading) return <div>loading</div>;
-  console.log(data);
   return data.Scores.map((x, index) => (
     <Score position={index + 1} username={x.username} points={x.points}></Score>
   ));

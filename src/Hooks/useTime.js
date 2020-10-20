@@ -14,7 +14,6 @@ export default function (seconds) {
     }, 1000);
 
     if (!time) {
-      console.log("stop");
       setTimeOver(true);
       clearTimeout(watch);
     }
