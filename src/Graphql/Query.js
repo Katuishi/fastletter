@@ -11,6 +11,10 @@ export const ALL_SCORE = gql`
 
 export const ADD_SCORE = gql`
   mutation addscore($data: InputScore!) {
-    addScore(user: $data)
+    addScore(user: $data){
+      username
+      points
+      level
+    }
   }
 `;

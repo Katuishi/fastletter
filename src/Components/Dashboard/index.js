@@ -11,7 +11,7 @@ export default function Dashboard() {
         </Link>
         <div className={Style.spacebar}></div>
         <Link to="/scoreboard">
-          <button className={Style.button}>Scorebank</button>
+          <button className={Style.button}>Scoreboard</button>
         </Link>
       </section>
     </div>
