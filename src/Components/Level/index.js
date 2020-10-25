@@ -1,21 +1,20 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { GameContext } from "../../Context/GameContext";
-import Style from "./Style.module.css";
+// import Style from "./Style.module.css";
 
 export default function Level() {
-
-  let { setLevel } = useContext(GameContext)
+  let { setLevel } = useContext(GameContext);
   return (
-    <div className={Style.container}>
+    <div>
       <Link to="/game">
-        <button onClick={()=> setLevel("easy")} className={Style.button}>Easy</button>
+        <button onClick={() => setLevel("easy")}>Easy</button>
       </Link>
       <Link to="/game">
-        <button onClick={()=>setLevel("mediun")} className={Style.button}>Mediun</button>
+        <button onClick={() => setLevel("mediun")}>Mediun</button>
       </Link>
       <Link to="/game">
-        <button onClick={()=>setLevel("hard")} className={Style.button}>Hard</button>
+        <button onClick={() => setLevel("hard")}>Hard</button>
       </Link>
     </div>
   );

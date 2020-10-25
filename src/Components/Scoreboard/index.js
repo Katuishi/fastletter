@@ -2,7 +2,7 @@ import { useQuery } from "@apollo/client";
 import React, { useState } from "react";
 import { ALL_SCORE } from "../../Graphql/Query";
 import Score from "../Score";
-import Style from "./Style.module.css";
+// import Style from "./Style.module.css";
 
 function ListScores({ level }) {
   const { data, error, loading } = useQuery(ALL_SCORE,{variables:{
@@ -20,28 +20,28 @@ export default function Scoreboard() {
   const [level, setLevel] = useState("easy");
 
   return (
-    <div className={Style.scoreboard}>
-      <div className={Style.scoreboard_header}>
+    <div >
+      <div >
         <button
-          className={level === "easy" ? Style.offbox : Style.onbox}
+          // className={level === "easy" ? Style.offbox : Style.onbox}
           onClick={() => setLevel("easy")}
         >
           EASY
         </button>
         <button
-          className={level === "mediun" ? Style.offbox : Style.onbox}
+          // className={level === "mediun" ? Style.offbox : Style.onbox}
           onClick={() => setLevel("mediun")}
         >
           MEDIUN
         </button>
         <button
-          className={level === "hard" ? Style.offbox : Style.onbox}
+          // className={level === "hard" ? Style.offbox : Style.onbox}
           onClick={() => setLevel("hard")}
         >
           HARD
         </button>
       </div>
-      <div className={Style.scoreboard_body}>
+      <div>
         <ListScores level={level} />
       </div>
     </div>

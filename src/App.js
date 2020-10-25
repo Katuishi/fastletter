@@ -8,7 +8,6 @@ import { client } from "./Graphql/Client";
 import { GameProvider } from "./Context/GameContext";
 import Scorelayout from "./Views/Scorelayout";
 
-
 function App() {
   return (
     <div>
@@ -31,7 +30,6 @@ function App() {
             </Switch>
           </BrowserRouter>
         </GameProvider>
-       
       </ApolloProvider>
     </div>
   );
